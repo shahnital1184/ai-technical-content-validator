@@ -300,11 +300,10 @@ if st.button(
                     st.warning("No analysis was returned.")
 
             except Exception as e:
-                st.error(type(e).__name__)
-                st.error("API request failed. Check private app logs.")
-                import logging
-                logging.error("Gemini request failed: %s", type(e).__name__)
-
+                st.error("Gemini API request failed.")
+                st.write("Error code:", getattr(e, "code", "Unknown"))
+                st.write("Status:", getattr(e, "status", "Unknown"))
+                
 # DISPLAY AND DOWNLOAD REPORT
 
 if "report" in st.session_state:
