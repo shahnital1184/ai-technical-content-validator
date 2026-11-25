@@ -35,6 +35,10 @@ client = genai.Client(
     api_key=st.secrets["GEMINI_API_KEY"]
 )
 
+if st.button("Check Available AI Models"):
+    for model in client.models.list():
+        st.write(model.name)
+        
 # SIDEBAR
 
 st.sidebar.header("Review Settings")
