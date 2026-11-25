@@ -299,13 +299,11 @@ if st.button(
 
                     st.warning("No analysis was returned.")
 
-            except Exception:
-
-                st.error(
-                    "Analysis unavailable. Check the API "
-                    "configuration, model availability "
-                    "or free-tier usage limits."
-                )
+            except Exception as e:
+                st.error(type(e).__name__)
+                st.error("API request failed. Check private app logs.")
+                import logging
+                logging.error("Gemini request failed: %s", type(e).__name__)
 
 # DISPLAY AND DOWNLOAD REPORT
 
